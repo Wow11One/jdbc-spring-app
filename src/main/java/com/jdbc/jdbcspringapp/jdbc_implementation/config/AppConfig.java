@@ -1,4 +1,4 @@
-package com.jdbc.jdbcspringapp.config;
+package com.jdbc.jdbcspringapp.jdbc_implementation.config;
 
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;

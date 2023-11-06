@@ -1,6 +1,6 @@
-package com.jdbc.jdbcspringapp.dao;
+package com.jdbc.jdbcspringapp.jdbc_implementation.dao;
 
-import com.jdbc.jdbcspringapp.model.Club;
+import com.jdbc.jdbcspringapp.jdbc_implementation.model.Club;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

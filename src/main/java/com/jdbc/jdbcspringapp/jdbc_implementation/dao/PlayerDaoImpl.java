@@ -1,7 +1,6 @@
-package com.jdbc.jdbcspringapp.dao;
+package com.jdbc.jdbcspringapp.jdbc_implementation.dao;
 
-import com.jdbc.jdbcspringapp.model.Club;
-import com.jdbc.jdbcspringapp.model.Player;
+import com.jdbc.jdbcspringapp.jdbc_implementation.model.Player;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -23,14 +22,14 @@ public class PlayerDaoImpl implements FootballDao<Player> {
     @Override
     public void create(Player player) {
         try (Connection connection = dataSource.getConnection()) {
-            if (findOne(player.getId()) != null) {
+            if (findOne(player.id()) != null) {
                 throw new SQLException("player with such id already exists");
             }
             String query = "INSERT INTO player (player_name, nationality, jersey_number) VALUES (?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, player.getName());
-            preparedStatement.setString(2, player.getNationality());
-            preparedStatement.setInt(3, player.getJerseyNumber());
+            preparedStatement.setString(1, player.name());
+            preparedStatement.setString(2, player.nationality());
+            preparedStatement.setInt(3, player.jerseyNumber());
             preparedStatement.execute();
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
@@ -39,16 +38,16 @@ public class PlayerDaoImpl implements FootballDao<Player> {
 
     @Override
     public void update(Player player) {
-        if (findOne(player.getId()) == null) {
+        if (findOne(player.id()) == null) {
             throw new NoSuchElementException("player with such id does not exist");
         }
         try (Connection connection = dataSource.getConnection()) {
             String query = "UPDATE player SET player_name = ?, nationality = ?, jersey_number = ? WHERE player_id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, player.getName());
-            preparedStatement.setString(2, player.getNationality());
-            preparedStatement.setInt(3, player.getJerseyNumber());
-            preparedStatement.setLong(4, player.getId());
+            preparedStatement.setString(1, player.name());
+            preparedStatement.setString(2, player.nationality());
+            preparedStatement.setInt(3, player.jerseyNumber());
+            preparedStatement.setLong(4, player.id());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());

@@ -1,4 +1,4 @@
-package com.jdbc.jdbcspringapp.model;
+package com.jdbc.jdbcspringapp.jdbc_implementation.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

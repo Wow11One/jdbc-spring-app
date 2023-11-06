@@ -1,4 +1,4 @@
-package com.jdbc.jdbcspringapp.dao;
+package com.jdbc.jdbcspringapp.jdbc_implementation.dao;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
